@@ -4,9 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.unsa.testing.domain.entities.Employee;
 import com.unsa.testing.domain.repositories.EmployeeRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
@@ -34,13 +36,13 @@ public class EmployeeRepositoryTests {
     @DisplayName("Save Employee on Database Test")
     void saveEmployeeTest() {
         // Given: Employee
-        Employee employee = Employee.builder()
+        Employee anotherEmployee = Employee.builder()
                 .name("Angel")
                 .lastname("Hincho")
                 .email("ahincho@unsa.edu.pe")
                 .build();
         // When: Save Entity
-        Employee savedEmployee = employeeRepository.save(employee);
+        Employee savedEmployee = employeeRepository.save(anotherEmployee);
         // Then: Verify the id field
         assertThat(savedEmployee).isNotNull();
         assertThat(savedEmployee.getId()).isGreaterThan(0L);
